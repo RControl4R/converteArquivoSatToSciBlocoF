@@ -74,18 +74,20 @@ def calc_campo_18(campo_16, campo_17):
 # Formata datas para AAAAMMDD
 # ================================
 def formatar_data(valor):
-    if valor is None or str(valor).strip() == "":
+    if valor is None:
         return ""
 
     texto = str(valor).strip()
 
-    # Formato yyyy-mm-dd
-    if "-" in texto and len(texto.split("-")[0]) == 4:
-        try:
-            ano, mes, dia = texto.split(" ")[0].split("-")
-            return f"{ano}{mes}{dia}"
-        except:
-            pass
+    if texto == "":
+        return ""
+
+    # Caso já venha como DDMMAAAA (8 dígitos)
+    if texto.isdigit() and len(texto) == 8:
+        dia = texto[0:2]
+        mes = texto[2:4]
+        ano = texto[4:8]
+        return f"{ano}{mes}{dia}"
 
     # Formato dd/mm/yyyy
     if "/" in texto:
@@ -95,14 +97,13 @@ def formatar_data(valor):
         except:
             pass
 
-    # Número serial (caso apareça)
-    try:
-        import pandas as pd
-        numero = float(texto)
-        data = pd.to_datetime(numero, unit="D", origin="1899-12-30")
-        return data.strftime("%Y%m%d")
-    except:
-        pass
+    # Formato yyyy-mm-dd
+    if "-" in texto and len(texto.split("-")[0]) == 4:
+        try:
+            ano, mes, dia = texto.split(" ")[0].split("-")
+            return f"{ano}{mes}{dia}"
+        except:
+            pass
 
     return texto
 
