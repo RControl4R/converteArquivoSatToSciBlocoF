@@ -132,6 +132,7 @@ def processar_arquivo():
         header=None,
         keep_default_na=False,
         engine="python",
+        encoding="latin-1",
         names=list(range(0, 60))  # número seguro de colunas
     )
 
