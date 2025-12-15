@@ -30,6 +30,49 @@ def calc_campo_01(ctx_00_2):
     return ""
 
 # ================================
+# Converte valor inteiro em string monetária (divide por 100)
+# Ex: "000000000052455" -> "524.55"
+# ================================
+def int_to_monetario(valor):
+    if valor is None:
+        return "0.00"
+
+    texto = str(valor).strip()
+    if texto == "":
+        return "0.00"
+
+    try:
+        return f"{int(texto) / 100:.2f}"
+    except:
+        return "0.00"
+
+# ================================
+# Campo 14 - cálculo padrão
+# (campo12 * campo13) / 100
+# ================================
+def calc_campo_14(campo_12, campo_13):
+    try:
+        v1 = float(str(campo_12).replace(",", "."))
+        v2 = float(str(campo_13))
+        return f"{(v1 * v2) / 100:.2f}"
+    except:
+        return "0.00"
+
+# ================================
+# Campo 18 - cálculo padrão
+# (campo16 * campo17) / 100
+# ================================
+def calc_campo_18(campo_16, campo_17):
+    try:
+        v1 = float(str(campo_16).replace(",", "."))
+        v2 = float(str(campo_17))
+        return f"{(v1 * v2) / 100:.2f}"
+    except:
+        return "0.00"
+
+
+
+# ================================
 # Processamento do arquivo TXT
 # ================================
 def processar_arquivo():
@@ -96,6 +139,70 @@ def processar_arquivo():
             # Campo 05 - coluna 14 da primeira linha 00
             campo_05 = str(ctx_00_1[3]).strip()
 
+            # Campo 06 - coluna 05 da primeira linha 00 (após a "/")
+            valor_col_05 = str(ctx_00_1[4]).strip()
+
+            if "/" in valor_col_05:
+                campo_06 = valor_col_05.split("/", 1)[1]
+            else:
+                campo_06 = ""
+            
+            # Campo 07 - Valor fixo "V"
+            campo_07 = "V"
+
+            # Campo 08 
+            campo_08 = int_to_monetario(row[8])
+
+            # Campo 09
+            campo_09 = ""
+
+            # Campo 10
+            campo_10 = ""
+
+            # Campo 11 - condicional baseado no Campo 01
+            if campo_01 in ("5", "6"):
+                campo_11 = "53"
+            elif campo_01 == "7":
+                campo_11 = "63"
+            else:
+                campo_11 = ""
+
+            # Campo 12 - mesmo valor do Campo 08 (sem aspas)
+            campo_12 = campo_08
+
+            # Campo 13 - condicional baseado no Campo 01
+            if campo_01 == "5":
+                campo_13 = "1.65"
+            else:
+                campo_13 = "1.2375"
+
+            # Campo 14
+            campo_14 = calc_campo_14(campo_12, campo_13)
+
+            # Campo 15 
+            campo_15 = campo_11
+
+            # Campo 16
+            campo_16 = campo_12
+
+            # campo_17 
+            if campo_01 == "5":
+                campo_17 = "7.6"
+            else:
+                campo_17 = "5.7"
+
+            # Campo 18
+            campo_18 = calc_campo_18(campo_16, campo_17)
+
+            # Campo 19
+            campo_19 = "14"
+
+            # Campo 20
+            campo_20 = "0"
+
+            # Campo 21 
+            campo_21 = "CREDITO SOBRE SUBCONTRATACAO DE FRETE"
+
 
             # ================================
             # Demais campos (ainda não mapeados)
@@ -106,22 +213,22 @@ def processar_arquivo():
                 3: campo_03,
                 4: "",
                 5: campo_05,
-                6: "",
-                7: "",
-                8: "",
+                6: campo_06,
+                7: campo_07,
+                8: campo_08,
                 9: "",
                 10: "",
-                11: "",
-                12: "",
-                13: "",
-                14: "",
-                15: "",
-                16: "",
-                17: "",
-                18: "",
-                19: "",
-                20: "",
-                21: "",
+                11: campo_11,
+                12: campo_12,
+                13: campo_13,
+                14: campo_14,
+                15: campo_15,
+                16: campo_16,
+                17: campo_17,
+                18: campo_18,
+                19: campo_19,
+                20: campo_20,
+                21: campo_21,
                 **{i: "" for i in range(22, 55)}
             }
 
