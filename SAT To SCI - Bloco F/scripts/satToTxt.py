@@ -70,6 +70,41 @@ def calc_campo_18(campo_16, campo_17):
     except:
         return "0.00"
 
+# ================================
+# Formata datas para AAAAMMDD
+# ================================
+def formatar_data(valor):
+    if valor is None or str(valor).strip() == "":
+        return ""
+
+    texto = str(valor).strip()
+
+    # Formato yyyy-mm-dd
+    if "-" in texto and len(texto.split("-")[0]) == 4:
+        try:
+            ano, mes, dia = texto.split(" ")[0].split("-")
+            return f"{ano}{mes}{dia}"
+        except:
+            pass
+
+    # Formato dd/mm/yyyy
+    if "/" in texto:
+        try:
+            dia, mes, ano = texto.split("/")
+            return f"{ano}{mes}{dia}"
+        except:
+            pass
+
+    # Número serial (caso apareça)
+    try:
+        import pandas as pd
+        numero = float(texto)
+        data = pd.to_datetime(numero, unit="D", origin="1899-12-30")
+        return data.strftime("%Y%m%d")
+    except:
+        pass
+
+    return texto
 
 
 # ================================
@@ -137,7 +172,7 @@ def processar_arquivo():
             campo_03 = str(ctx_00_1[14]).strip()
 
             # Campo 05 - coluna 14 da primeira linha 00
-            campo_05 = str(ctx_00_1[3]).strip()
+            campo_05 = formatar_data(ctx_00_1[3])
 
             # Campo 06 - coluna 05 da primeira linha 00 (após a "/")
             valor_col_05 = str(ctx_00_1[4]).strip()
