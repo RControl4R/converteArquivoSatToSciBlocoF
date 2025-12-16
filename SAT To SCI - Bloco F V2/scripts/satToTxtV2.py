@@ -22,11 +22,11 @@ def calc_campo_01(ctx_00_2):
     valor = str(ctx_00_2[7]).strip()  # coluna 8 (índice 7)
 
     if valor == "1":
-        return "5"
+        return "22"
     if valor == "2":
-        return "6"
+        return "23"
     if valor == "3":
-        return "7"
+        return "24"
     return ""
 
 # ================================
