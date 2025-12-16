@@ -1,11 +1,11 @@
 # Sat para Sci - Bloco F 🚀
 
-Esse projeto visa automatizar a conversão de arquivos contábeis extraídos de um sistema(INTERSAT) para importar em outro, (SCI), para evitar o trabalho manual ou formatação de planilhas.
+Esse projeto visa automatizar a conversão de arquivos contábeis extraídos de um sistema(INTERSAT) para importar em outro, (SCI), para evitar o trabalho manual ou formatação de planilhas/arquivos.
 
 
 ## Descrição
 
-Movimentações contábeis que devem ser importadas no novo sistema (SCI) veem fora do padrão esperado pelo sistema. Esta aplicação foi feita para evitar que o colaborador gaste muito tempo formatando a planilha extraída para se adaptar ao modelo esperado pelo novo sistema.
+Movimentações contábeis que devem ser importadas no novo sistema (SCI), vêm fora do padrão esperado ao ser extraída no sistema antigo. Esta aplicação visa suprir a necessidade do colaborador gastar tempo formatando a planilha/arquivo extraído para se adaptar ao layout pedido pelo sci.
 
 *   **Tecnologias Utilizadas:**
     *   Python (https://www.python.org/doc/)
