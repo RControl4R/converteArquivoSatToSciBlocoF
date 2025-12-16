@@ -203,9 +203,9 @@ def processar_arquivo(caminho_arquivo_txt=None):
             campo_10 = ""
 
             # Campo 11 - condicional baseado no Campo 01
-            if campo_01 in ("5", "6"):
+            if campo_01 in ("22", "23"):
                 campo_11 = "53"
-            elif campo_01 == "7":
+            elif campo_01 == "24":
                 campo_11 = "63"
             else:
                 campo_11 = ""
@@ -214,7 +214,7 @@ def processar_arquivo(caminho_arquivo_txt=None):
             campo_12 = campo_08
 
             # Campo 13 - condicional baseado no Campo 01
-            if campo_01 == "5":
+            if campo_01 == "22":
                 campo_13 = "1.65"
             else:
                 campo_13 = "1.2375"
@@ -229,7 +229,7 @@ def processar_arquivo(caminho_arquivo_txt=None):
             campo_16 = campo_12
 
             # campo_17 
-            if campo_01 == "5":
+            if campo_01 == "22":
                 campo_17 = "7.6"
             else:
                 campo_17 = "5.7"
