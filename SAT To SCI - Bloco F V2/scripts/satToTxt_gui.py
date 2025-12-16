@@ -10,32 +10,6 @@ import sys
 # Importa a função da V2 (satToTxtV2.py)
 from satToTxtV2 import processar_arquivo
 
-"""
-def selecionar_arquivo():
-    arquivo = filedialog.askopenfilename(
-        title="Selecione o arquivo SAT (TXT)",
-        filetypes=[("Arquivos TXT", "*.txt")]
-    )
-
-    if not arquivo:
-        return
-
-    try:
-        processar_arquivo(arquivo)
-
-        messagebox.showinfo(
-            "Sucesso",
-            "Arquivo processado com sucesso!!\n\n"
-            "O arquivo convertido foi salvo na mesma pasta do arquivo de origem."
-        )
-
-    except Exception as e:
-        messagebox.showerror(
-            "Erro",
-            f"Ocorreu um erro ao processar o arquivo:\n\n{str(e)}"
-        )
-"""
-
 def selecionar_arquivo():
     while True:
         arquivo = filedialog.askopenfilename(
