@@ -11,7 +11,7 @@ Movimentações contábeis que devem ser importadas no novo sistema (SCI), vêm 
     *   Python (https://www.python.org/doc/)
     *   PyInstaller (https://pyinstaller.org/en/stable/)
 
-## Exemplos de Uso
+## Exemplo de Uso
 
 Para usar o programa : 
 - Rodar o executável: O usuário pode rodar o programa executável disponibilizado na sua pasta da rede. 
