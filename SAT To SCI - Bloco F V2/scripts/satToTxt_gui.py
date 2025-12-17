@@ -10,6 +10,8 @@ import sys
 # Importa a função da V2 (satToTxtV2.py)
 from satToTxtV2 import processar_arquivo
 
+VERSAO = "1.3"
+
 def selecionar_arquivo():
     while True:
         arquivo = filedialog.askopenfilename(
@@ -72,7 +74,7 @@ botao.pack(pady=10)
 
 rodape = tk.Label(
     janela,
-    text="Versão 1.426",
+    text="Versão {VERSAO}",
     font=("Arial", 9),
     fg="gray"
 )
