@@ -31,7 +31,6 @@ def selecionar_arquivo():
             )
 
             if not resposta:
-                janela.destroy()
                 return
 
             # Se respondeu SIM, o loop continua
