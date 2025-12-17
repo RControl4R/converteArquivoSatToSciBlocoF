@@ -74,7 +74,7 @@ botao.pack(pady=10)
 
 rodape = tk.Label(
     janela,
-    text="Versão {VERSAO}",
+    text=f"Versão {VERSAO}",
     font=("Arial", 9),
     fg="gray"
 )
